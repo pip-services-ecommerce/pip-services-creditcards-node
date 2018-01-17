@@ -1,0 +1,9 @@
+/dist
+/node_modules
+/npm-debug.log
+/.idea
+/config/config.yml
+/config/test_connections.yml
+/data/creditcards.test.json
+/data/creditcards.json
+/obj/test
