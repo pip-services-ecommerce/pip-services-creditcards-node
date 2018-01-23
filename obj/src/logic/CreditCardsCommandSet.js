@@ -21,7 +21,7 @@ class CreditCardsCommandSet extends pip_services_commons_node_1.CommandSet {
         this.addCommand(this.makeDeleteCreditCardByIdCommand());
     }
     makeGetCreditCardsCommand() {
-        return new pip_services_commons_node_2.Command("get_creditcards", new pip_services_commons_node_5.ObjectSchema(true)
+        return new pip_services_commons_node_2.Command("get_credit_cards", new pip_services_commons_node_5.ObjectSchema(true)
             .withOptionalProperty('filter', new pip_services_commons_node_7.FilterParamsSchema())
             .withOptionalProperty('paging', new pip_services_commons_node_8.PagingParamsSchema()), (correlationId, args, callback) => {
             let filter = pip_services_commons_node_3.FilterParams.fromValue(args.get("filter"));
@@ -30,31 +30,35 @@ class CreditCardsCommandSet extends pip_services_commons_node_1.CommandSet {
         });
     }
     makeGetCreditCardByIdCommand() {
-        return new pip_services_commons_node_2.Command("get_creditcard_by_id", new pip_services_commons_node_5.ObjectSchema(true)
-            .withRequiredProperty('card_id', pip_services_commons_node_6.TypeCode.String), (correlationId, args, callback) => {
-            let card_id = args.getAsString("card_id");
-            this._logic.getCreditCardById(correlationId, card_id, callback);
+        return new pip_services_commons_node_2.Command("get_credit_card_by_id", new pip_services_commons_node_5.ObjectSchema(true)
+            .withRequiredProperty('card_id', pip_services_commons_node_6.TypeCode.String)
+            .withRequiredProperty('customer_id', pip_services_commons_node_6.TypeCode.String), (correlationId, args, callback) => {
+            let cardId = args.getAsString("card_id");
+            let customerId = args.getAsString("customer_id");
+            this._logic.getCreditCardById(correlationId, cardId, customerId, callback);
         });
     }
     makeCreateCreditCardCommand() {
-        return new pip_services_commons_node_2.Command("create_creditcard", new pip_services_commons_node_5.ObjectSchema(true)
+        return new pip_services_commons_node_2.Command("create_credit_card", new pip_services_commons_node_5.ObjectSchema(true)
             .withRequiredProperty('card', new CreditCardV1Schema_1.CreditCardV1Schema()), (correlationId, args, callback) => {
             let card = args.get("card");
             this._logic.createCreditCard(correlationId, card, callback);
         });
     }
     makeUpdateCreditCardCommand() {
-        return new pip_services_commons_node_2.Command("update_creditcard", new pip_services_commons_node_5.ObjectSchema(true)
+        return new pip_services_commons_node_2.Command("update_credit_card", new pip_services_commons_node_5.ObjectSchema(true)
             .withRequiredProperty('card', new CreditCardV1Schema_1.CreditCardV1Schema()), (correlationId, args, callback) => {
             let card = args.get("card");
             this._logic.updateCreditCard(correlationId, card, callback);
         });
     }
     makeDeleteCreditCardByIdCommand() {
-        return new pip_services_commons_node_2.Command("delete_creditcard_by_id", new pip_services_commons_node_5.ObjectSchema(true)
-            .withRequiredProperty('card_id', pip_services_commons_node_6.TypeCode.String), (correlationId, args, callback) => {
+        return new pip_services_commons_node_2.Command("delete_credit_card_by_id", new pip_services_commons_node_5.ObjectSchema(true)
+            .withRequiredProperty('card_id', pip_services_commons_node_6.TypeCode.String)
+            .withRequiredProperty('customer_id', pip_services_commons_node_6.TypeCode.String), (correlationId, args, callback) => {
             let cardId = args.getAsNullableString("card_id");
-            this._logic.deleteCreditCardById(correlationId, cardId, callback);
+            let customerId = args.getAsString("customer_id");
+            this._logic.deleteCreditCardById(correlationId, cardId, customerId, callback);
         });
     }
 }

@@ -83,8 +83,8 @@ suite('CreditCardsLambdaFunction', ()=> {
             (callback) => {
                 lambda.act(
                     {
-                        role: 'creditcards',
-                        cmd: 'create_creditcard',
+                        role: 'credit_cards',
+                        cmd: 'create_credit_card',
                         card: CREDIT_CARD1
                     },
                     (err, creditCard) => {
@@ -105,8 +105,8 @@ suite('CreditCardsLambdaFunction', ()=> {
             (callback) => {
                 lambda.act(
                     {
-                        role: 'creditcards',
-                        cmd: 'create_creditcard',
+                        role: 'credit_cards',
+                        cmd: 'create_credit_card',
                         card: CREDIT_CARD2
                     },
                     (err, creditCard) => {
@@ -127,8 +127,8 @@ suite('CreditCardsLambdaFunction', ()=> {
             (callback) => {
                 lambda.act(
                     {
-                        role: 'creditcards',
-                        cmd: 'get_creditcards' 
+                        role: 'credit_cards',
+                        cmd: 'get_credit_cards' 
                     },
                     (err, page) => {
                         assert.isNull(err);
@@ -146,8 +146,8 @@ suite('CreditCardsLambdaFunction', ()=> {
 
                 lambda.act(
                     {
-                        role: 'creditcards',
-                        cmd: 'update_creditcard',
+                        role: 'credit_cards',
+                        cmd: 'update_credit_card',
                         card: creditCard1
                     },
                     (err, creditCard) => {
@@ -167,9 +167,10 @@ suite('CreditCardsLambdaFunction', ()=> {
             (callback) => {
                 lambda.act(
                     {
-                        role: 'creditcards',
-                        cmd: 'delete_creditcard_by_id',
-                        card_id: creditCard1.id
+                        role: 'credit_cards',
+                        cmd: 'delete_credit_card_by_id',
+                        card_id: creditCard1.id,
+                        customer_id: creditCard1.customer_id
                     },
                     (err) => {
                         assert.isNull(err);
@@ -182,9 +183,10 @@ suite('CreditCardsLambdaFunction', ()=> {
             (callback) => {
                 lambda.act(
                     {
-                        role: 'creditcards',
-                        cmd: 'get_creditcard_by_id',
-                        card_id: creditCard1.id
+                        role: 'credit_cards',
+                        cmd: 'get_credit_card_by_id',
+                        card_id: creditCard1.id,
+                        customer_id: creditCard1.customer_id
                     },
                     (err, creditCard) => {
                         assert.isNull(err);

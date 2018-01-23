@@ -116,7 +116,7 @@ Example of microservice configuration
   level: "trace"
 
 - descriptor: "pip-services-creditcards:persistence:file:default:1.0"
-  path: "./data/creditcards.json"
+  path: "./data/credit_cards.json"
 
 - descriptor: "pip-services-creditcards:controller:default:default:1.0"
 
@@ -188,8 +188,8 @@ client.open(null, function(err) {
 
 Now the client is ready to perform operations
 ```javascript
-// Create a new creditcard
-var creditcard = {
+// Create a new credit_card
+var credit_card = {
     customer_id: '1',
     type: 'visa',
     number: '1111111111111111',
@@ -212,15 +212,15 @@ var creditcard = {
 
 client.createCreditCard(
     null,
-    creditcard,
-    function (err, creditcard) {
+    credit_card,
+    function (err, credit_card) {
         ...
     }
 );
 ```
 
 ```javascript
-// Get the list of creditcards on 'time management' topic
+// Get the list of credit_cards on 'time management' topic
 client.getCreditCards(
     null,
     {

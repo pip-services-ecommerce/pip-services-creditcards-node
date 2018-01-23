@@ -32,7 +32,7 @@ export class CreditCardsCommandSet extends CommandSet {
 
 	private makeGetCreditCardsCommand(): ICommand {
 		return new Command(
-			"get_creditcards",
+			"get_credit_cards",
 			new ObjectSchema(true)
 				.withOptionalProperty('filter', new FilterParamsSchema())
 				.withOptionalProperty('paging', new PagingParamsSchema()),
@@ -46,19 +46,21 @@ export class CreditCardsCommandSet extends CommandSet {
 
 	private makeGetCreditCardByIdCommand(): ICommand {
 		return new Command(
-			"get_creditcard_by_id",
+			"get_credit_card_by_id",
 			new ObjectSchema(true)
-				.withRequiredProperty('card_id', TypeCode.String),
+				.withRequiredProperty('card_id', TypeCode.String)
+				.withRequiredProperty('customer_id', TypeCode.String),
             (correlationId: string, args: Parameters, callback: (err: any, result: any) => void) => {
-                let card_id = args.getAsString("card_id");
-                this._logic.getCreditCardById(correlationId, card_id, callback);
+                let cardId = args.getAsString("card_id");
+                let customerId = args.getAsString("customer_id");
+                this._logic.getCreditCardById(correlationId, cardId, customerId, callback);
             }
 		);
 	}
 
 	private makeCreateCreditCardCommand(): ICommand {
 		return new Command(
-			"create_creditcard",
+			"create_credit_card",
 			new ObjectSchema(true)
 				.withRequiredProperty('card', new CreditCardV1Schema()),
             (correlationId: string, args: Parameters, callback: (err: any, result: any) => void) => {
@@ -70,7 +72,7 @@ export class CreditCardsCommandSet extends CommandSet {
 
 	private makeUpdateCreditCardCommand(): ICommand {
 		return new Command(
-			"update_creditcard",
+			"update_credit_card",
 			new ObjectSchema(true)
 				.withRequiredProperty('card', new CreditCardV1Schema()),
             (correlationId: string, args: Parameters, callback: (err: any, result: any) => void) => {
@@ -82,12 +84,14 @@ export class CreditCardsCommandSet extends CommandSet {
 	
 	private makeDeleteCreditCardByIdCommand(): ICommand {
 		return new Command(
-			"delete_creditcard_by_id",
+			"delete_credit_card_by_id",
 			new ObjectSchema(true)
-				.withRequiredProperty('card_id', TypeCode.String),
+				.withRequiredProperty('card_id', TypeCode.String)
+				.withRequiredProperty('customer_id', TypeCode.String),
             (correlationId: string, args: Parameters, callback: (err: any, result: any) => void) => {
                 let cardId = args.getAsNullableString("card_id");
-                this._logic.deleteCreditCardById(correlationId, cardId, callback);
+                let customerId = args.getAsString("customer_id");
+                this._logic.deleteCreditCardById(correlationId, cardId, customerId, callback);
 			}
 		);
 	}

@@ -4,6 +4,6 @@
 /.idea
 /config/config.yml
 /config/test_connections.yml
-/data/creditcards.test.json
-/data/creditcards.json
+/data/credit_cards.test.json
+/data/credit_cards.json
 /obj/test

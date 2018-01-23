@@ -101,7 +101,7 @@ suite('CreditCardsHttpServiceV1', ()=> {
         async.series([
         // Create one credit card
             (callback) => {
-                rest.post('/creditcards/create_creditcard',
+                rest.post('/credit_cards/create_credit_card',
                     {
                         card: CREDIT_CARD1
                     },
@@ -121,7 +121,7 @@ suite('CreditCardsHttpServiceV1', ()=> {
             },
         // Create another credit card
             (callback) => {
-                rest.post('/creditcards/create_creditcard', 
+                rest.post('/credit_cards/create_credit_card', 
                     {
                         card: CREDIT_CARD2
                     },
@@ -141,7 +141,7 @@ suite('CreditCardsHttpServiceV1', ()=> {
             },
         // Get all credit cards
             (callback) => {
-                rest.post('/creditcards/get_creditcards',
+                rest.post('/credit_cards/get_credit_cards',
                     {},
                     (err, req, res, page) => {
                         assert.isNull(err);
@@ -157,7 +157,7 @@ suite('CreditCardsHttpServiceV1', ()=> {
             (callback) => {
                 creditCard1.name = 'Updated Card 1';
 
-                rest.post('/creditcards/update_creditcard',
+                rest.post('/credit_cards/update_credit_card',
                     { 
                         card: creditCard1
                     },
@@ -176,9 +176,10 @@ suite('CreditCardsHttpServiceV1', ()=> {
             },
         // Delete credit card
             (callback) => {
-                rest.post('/creditcards/delete_creditcard_by_id',
+                rest.post('/credit_cards/delete_credit_card_by_id',
                     {
-                        card_id: creditCard1.id
+                        card_id: creditCard1.id,
+                        customer_id: creditCard1.customer_id
                     },
                     (err, req, res, result) => {
                         assert.isNull(err);
@@ -191,9 +192,10 @@ suite('CreditCardsHttpServiceV1', ()=> {
             },
         // Try to get delete credit card
             (callback) => {
-                rest.post('/creditcards/get_creditcard_by_id',
+                rest.post('/credit_cards/get_credit_card_by_id',
                     {
-                        card_id: creditCard1.id
+                        card_id: creditCard1.id,
+                        customer_id: creditCard1.customer_id
                     },
                     (err, req, res, result) => {
                         assert.isNull(err);

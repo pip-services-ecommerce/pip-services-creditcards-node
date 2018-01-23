@@ -8,7 +8,7 @@ suite('CreditCardsFilePersistence', ()=> {
     let fixture: CreditCardsPersistenceFixture;
     
     setup((done) => {
-        persistence = new CreditCardsFilePersistence('./data/creditcards.test.json');
+        persistence = new CreditCardsFilePersistence('./data/credit_cards.test.json');
 
         fixture = new CreditCardsPersistenceFixture(persistence);
 

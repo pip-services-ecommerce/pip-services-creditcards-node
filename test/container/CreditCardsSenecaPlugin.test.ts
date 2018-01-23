@@ -35,8 +35,8 @@ suite('CreditCardsSenecaPlugin', ()=> {
     test('Ping', (done) => {
         seneca.act(
             {
-                role: 'creditcards',
-                cmd: 'get_creditcards' 
+                role: 'credit_cards',
+                cmd: 'get_credit_cards' 
             },
             (err, page) => {
                 assert.isNull(err);

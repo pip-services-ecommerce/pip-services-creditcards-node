@@ -3,7 +3,7 @@ import { CommandableSenecaService } from 'pip-services-net-node';
 
 export class CreditCardsSenecaServiceV1 extends CommandableSenecaService {
     public constructor() {
-        super('creditcards');
+        super('credit_cards');
         this._dependencyResolver.put('controller', new Descriptor('pip-services-creditcards', 'controller', 'default', '*', '1.0'));
     }
 }

@@ -12,11 +12,11 @@
 
 # File persistence. Use it for testing of for simple standalone deployments
 - descriptor: "pip-services-creditcards:persistence:file:default:1.0"
-  path: "./data/creditcards.json"
+  path: "./data/credit_cards.json"
 
 # MongoDB Persistence
 # - descriptor: "pip-services-creditcards:persistence:mongodb:default:1.0"
-#   collection: creditcards
+#   collection: credit_cards
 #   connection:
 #     host: localhost
 #     port: 27017

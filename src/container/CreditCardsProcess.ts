@@ -6,7 +6,7 @@ import { CreditCardsServiceFactory } from '../build/CreditCardsServiceFactory';
 export class CreditCardsProcess extends ProcessContainer {
 
     public constructor() {
-        super("creditcards", "Credit cards microservice");
+        super("credit_cards", "Credit cards microservice");
         this._factories.add(new CreditCardsServiceFactory);
     }
 
