@@ -1,9 +1,7 @@
-/dist
 /node_modules
 /npm-debug.log
 /.idea
-/config/config.yml
-/config/test_connections.yml
 /data/credit_cards.test.json
 /data/credit_cards.json
 /obj/test
+/docker/id_rsa*
