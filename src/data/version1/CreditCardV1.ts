@@ -18,7 +18,7 @@ export class CreditCardV1 implements IStringIdentifiable {
     public last_name?: string;
     public billing_address?: AddressV1;
     public state?: string;
-    public cvc?: string;
+    public ccv?: string;
 
     public name?: string;
     public saved?: boolean;

@@ -13,7 +13,7 @@ export declare class CreditCardV1 implements IStringIdentifiable {
     last_name?: string;
     billing_address?: AddressV1;
     state?: string;
-    cvc?: string;
+    ccv?: string;
     name?: string;
     saved?: boolean;
     default?: boolean;

@@ -20,7 +20,7 @@ export class CreditCardV1Schema extends ObjectSchema {
         this.withRequiredProperty('last_name', TypeCode.String);
         this.withRequiredProperty('billing_address', new AddressV1Schema());
         this.withOptionalProperty('state', TypeCode.String);
-        this.withOptionalProperty('cvc', TypeCode.String);
+        this.withOptionalProperty('ccv', TypeCode.String);
 
         this.withOptionalProperty('name', TypeCode.String);
         this.withOptionalProperty('saved', TypeCode.Boolean);

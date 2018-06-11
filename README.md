@@ -33,7 +33,7 @@ class AddressV1 {
     public line1: string;
     public line2?: string;
     public city: string;
-    public zip?: string;
+    public postal_code?: string;
     public postal_code?: string;
     public country_code: string; // ISO 3166-1
 }
@@ -53,7 +53,7 @@ class CreditCardV1 implements IStringIdentifiable {
     public last_name?: string;
     public billing_address?: AddressV1;
     public state?: string;
-    public cvc?: string;
+    public ccv?: string;
 
     public name?: string;
     public saved?: boolean;
@@ -200,10 +200,10 @@ var credit_card = {
     billing_address: {
         line1: '2345 Swan Rd',
         city: 'Tucson',
-        zip: '85710',
+        postal_code: '85710',
         country_code: 'US'
     },
-    cvc: '213',
+    ccv: '213',
     name: 'Test Card 1',
     saved: true,
     default: true,

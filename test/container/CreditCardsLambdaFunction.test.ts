@@ -26,10 +26,10 @@ let CREDIT_CARD1: CreditCardV1 = {
     billing_address: {
         line1: '2345 Swan Rd',
         city: 'Tucson',
-        zip: '85710',
+        postal_code: '85710',
         country_code: 'US'
     },
-    cvc: '213',
+    ccv: '213',
     name: 'Test Card 1',
     saved: true,
     default: true,
@@ -47,7 +47,7 @@ let CREDIT_CARD2: CreditCardV1 = {
     billing_address: {
         line1: '123 Broadway Blvd',
         city: 'New York',
-        zip: '123001',
+        postal_code: '123001',
         country_code: 'US'
     },
     name: 'Test Card 2',

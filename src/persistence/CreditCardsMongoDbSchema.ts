@@ -9,7 +9,7 @@ export let CreditCardsMongoDbSchema = function(collection?: string) {
             line1: { type: String, required: true },
             line2: { type: String, required: false },
             city: { type: String, required: true },
-            zip: { type: String, required: false },
+            state: { type: String, required: false },
             postal_code: { type: String, required: false },
             country_code: { type: String, required: true }
         }
@@ -42,7 +42,7 @@ export let CreditCardsMongoDbSchema = function(collection?: string) {
             last_name: { type: String, required: false },
             billing_address: { type: AddressSchema, required: false },
             state: { type: String, required: false },
-            cvc: { type: String, required: false },
+            ccv: { type: String, required: false },
 
             /* Management  */
             name: { type: String, required: false },

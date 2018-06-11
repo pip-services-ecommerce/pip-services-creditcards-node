@@ -8,7 +8,7 @@ class AddressV1Schema extends pip_services_commons_node_1.ObjectSchema {
         this.withRequiredProperty('line1', pip_services_commons_node_2.TypeCode.String);
         this.withOptionalProperty('line2', pip_services_commons_node_2.TypeCode.String);
         this.withRequiredProperty('city', pip_services_commons_node_2.TypeCode.String);
-        this.withOptionalProperty('zip', pip_services_commons_node_2.TypeCode.String);
+        this.withOptionalProperty('state', pip_services_commons_node_2.TypeCode.String);
         this.withOptionalProperty('postal_code', pip_services_commons_node_2.TypeCode.String);
         this.withRequiredProperty('country_code', pip_services_commons_node_2.TypeCode.String);
     }

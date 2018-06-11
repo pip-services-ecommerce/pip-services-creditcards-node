@@ -16,7 +16,7 @@ let CREDIT_CARD1: CreditCardV1 = {
     id: '1',
     customer_id: '1',
     type: CreditCardTypeV1.Visa,
-    number: '1111111111111111',
+    number: '4032036094894795',
     expire_month: 1,
     expire_year: 2021,
     first_name: 'Bill',
@@ -24,10 +24,11 @@ let CREDIT_CARD1: CreditCardV1 = {
     billing_address: {
         line1: '2345 Swan Rd',
         city: 'Tucson',
-        zip: '85710',
+        state: 'AZ',
+        postal_code: '85710',
         country_code: 'US'
     },
-    cvc: '213',
+    ccv: '213',
     name: 'Test Card 1',
     saved: true,
     default: true,
@@ -37,7 +38,7 @@ let CREDIT_CARD2: CreditCardV1 = {
     id: '2',
     customer_id: '1',
     type: CreditCardTypeV1.Visa,
-    number: '2222222222222222',
+    number: '4032037578262780',
     expire_month: 4,
     expire_year: 2028,
     first_name: 'Joe',
@@ -45,7 +46,8 @@ let CREDIT_CARD2: CreditCardV1 = {
     billing_address: {
         line1: '123 Broadway Blvd',
         city: 'New York',
-        zip: '123001',
+        state: 'NY',
+        postal_code: '123001',
         country_code: 'US'
     },
     name: 'Test Card 2',
@@ -57,7 +59,7 @@ let CREDIT_CARD3: CreditCardV1 = {
     id: '3',
     customer_id: '2',
     type: CreditCardTypeV1.Visa,
-    number: '3333333333333333',
+    number: '4032037578262780',
     expire_month: 5,
     expire_year: 2022,
     first_name: 'Steve',
@@ -65,10 +67,12 @@ let CREDIT_CARD3: CreditCardV1 = {
     billing_address: {
         line1: '234 6th Str',
         city: 'Los Angeles',
-        zip: '65320',
+        state: 'CA',
+        postal_code: '65320',
         country_code: 'US'
     },
-    cvc: '124',
+    ccv: '124',
+    name: 'Test Card 2',
     state: CreditCardStateV1.Ok
 };
 
@@ -91,7 +95,8 @@ export class CreditCardsPersistenceFixture {
                         assert.isNull(err);
 
                         assert.isObject(creditCard);
-                        assert.equal(creditCard.number, CREDIT_CARD1.number);
+                        assert.equal(creditCard.first_name, CREDIT_CARD1.first_name);
+                        assert.equal(creditCard.last_name, CREDIT_CARD1.last_name);
                         assert.equal(creditCard.expire_year, CREDIT_CARD1.expire_year);
                         assert.equal(creditCard.customer_id, CREDIT_CARD1.customer_id);
 
@@ -108,7 +113,8 @@ export class CreditCardsPersistenceFixture {
                         assert.isNull(err);
 
                         assert.isObject(creditCard);
-                        assert.equal(creditCard.number, CREDIT_CARD2.number);
+                        assert.equal(creditCard.first_name, CREDIT_CARD2.first_name);
+                        assert.equal(creditCard.last_name, CREDIT_CARD2.last_name);
                         assert.equal(creditCard.expire_year, CREDIT_CARD2.expire_year);
                         assert.equal(creditCard.customer_id, CREDIT_CARD2.customer_id);
 
@@ -125,7 +131,8 @@ export class CreditCardsPersistenceFixture {
                         assert.isNull(err);
 
                         assert.isObject(creditCard);
-                        assert.equal(creditCard.number, CREDIT_CARD3.number);
+                        assert.equal(creditCard.first_name, CREDIT_CARD3.first_name);
+                        assert.equal(creditCard.last_name, CREDIT_CARD3.last_name);
                         assert.equal(creditCard.expire_year, CREDIT_CARD3.expire_year);
                         assert.equal(creditCard.customer_id, CREDIT_CARD3.customer_id);
 
@@ -174,7 +181,10 @@ export class CreditCardsPersistenceFixture {
 
                         assert.isObject(creditCard);
                         assert.equal(creditCard.name, 'Updated Card 1');
-                        assert.equal(creditCard.id, creditCard1.id);
+                        // PayPal changes id on update
+                        //!!assert.equal(creditCard.id, creditCard1.id);
+
+                        creditCard1 = creditCard;
 
                         callback();
                     }
@@ -245,7 +255,8 @@ export class CreditCardsPersistenceFixture {
                         assert.isNull(err);
 
                         assert.isObject(page);
-                        assert.lengthOf(page.data, 2);
+                        // PayPal calculate states by itself
+                        //assert.lengthOf(page.data, 2);
 
                         callback();
                     }
@@ -281,7 +292,8 @@ export class CreditCardsPersistenceFixture {
                         assert.isNull(err);
 
                         assert.isObject(page);
-                        assert.lengthOf(page.data, 2);
+                        // PayPal manages ids by itself
+                        //assert.lengthOf(page.data, 2);
 
                         callback();
                     }

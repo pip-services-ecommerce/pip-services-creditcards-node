@@ -11,7 +11,6 @@ import { PagingParams } from 'pip-services-commons-node';
 import { DataPage } from 'pip-services-commons-node';
 import { ICommandable } from 'pip-services-commons-node';
 import { CommandSet } from 'pip-services-commons-node';
-import { TagsProcessor } from 'pip-services-commons-node';
 import { BadRequestException } from 'pip-services-commons-node';
 
 import { CreditCardV1 } from '../data/version1/CreditCardV1';
