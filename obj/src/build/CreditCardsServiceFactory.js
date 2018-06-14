@@ -14,6 +14,7 @@ class CreditCardsServiceFactory extends pip_services_commons_node_1.Factory {
         this.registerAsType(CreditCardsServiceFactory.MemoryPersistenceDescriptor, CreditCardsMemoryPersistence_1.CreditCardsMemoryPersistence);
         this.registerAsType(CreditCardsServiceFactory.FilePersistenceDescriptor, CreditCardsFilePersistence_1.CreditCardsFilePersistence);
         this.registerAsType(CreditCardsServiceFactory.MongoDbPersistenceDescriptor, CreditCardsMongoDbPersistence_1.CreditCardsMongoDbPersistence);
+        this.registerAsType(CreditCardsServiceFactory.PayPalPersistenceDescriptor, CreditCardsMongoDbPersistence_1.CreditCardsMongoDbPersistence);
         this.registerAsType(CreditCardsServiceFactory.ControllerDescriptor, CreditCardsController_1.CreditCardsController);
         this.registerAsType(CreditCardsServiceFactory.SenecaServiceDescriptor, CreditCardsSenecaServiceV1_1.CreditCardsSenecaServiceV1);
         this.registerAsType(CreditCardsServiceFactory.HttpServiceDescriptor, CreditCardsHttpServiceV1_1.CreditCardsHttpServiceV1);
