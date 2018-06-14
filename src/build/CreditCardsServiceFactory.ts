@@ -23,6 +23,7 @@ export class CreditCardsServiceFactory extends Factory {
 		this.registerAsType(CreditCardsServiceFactory.MemoryPersistenceDescriptor, CreditCardsMemoryPersistence);
 		this.registerAsType(CreditCardsServiceFactory.FilePersistenceDescriptor, CreditCardsFilePersistence);
 		this.registerAsType(CreditCardsServiceFactory.MongoDbPersistenceDescriptor, CreditCardsMongoDbPersistence);
+		this.registerAsType(CreditCardsServiceFactory.PayPalPersistenceDescriptor, CreditCardsMongoDbPersistence);
 		this.registerAsType(CreditCardsServiceFactory.ControllerDescriptor, CreditCardsController);
 		this.registerAsType(CreditCardsServiceFactory.SenecaServiceDescriptor, CreditCardsSenecaServiceV1);
 		this.registerAsType(CreditCardsServiceFactory.HttpServiceDescriptor, CreditCardsHttpServiceV1);
