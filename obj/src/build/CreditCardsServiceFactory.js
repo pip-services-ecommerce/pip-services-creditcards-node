@@ -5,6 +5,7 @@ const pip_services_commons_node_2 = require("pip-services-commons-node");
 const CreditCardsMongoDbPersistence_1 = require("../persistence/CreditCardsMongoDbPersistence");
 const CreditCardsFilePersistence_1 = require("../persistence/CreditCardsFilePersistence");
 const CreditCardsMemoryPersistence_1 = require("../persistence/CreditCardsMemoryPersistence");
+const CreditCardsPayPalPersistence_1 = require("../persistence/CreditCardsPayPalPersistence");
 const CreditCardsController_1 = require("../logic/CreditCardsController");
 const CreditCardsHttpServiceV1_1 = require("../services/version1/CreditCardsHttpServiceV1");
 const CreditCardsSenecaServiceV1_1 = require("../services/version1/CreditCardsSenecaServiceV1");
@@ -14,7 +15,7 @@ class CreditCardsServiceFactory extends pip_services_commons_node_1.Factory {
         this.registerAsType(CreditCardsServiceFactory.MemoryPersistenceDescriptor, CreditCardsMemoryPersistence_1.CreditCardsMemoryPersistence);
         this.registerAsType(CreditCardsServiceFactory.FilePersistenceDescriptor, CreditCardsFilePersistence_1.CreditCardsFilePersistence);
         this.registerAsType(CreditCardsServiceFactory.MongoDbPersistenceDescriptor, CreditCardsMongoDbPersistence_1.CreditCardsMongoDbPersistence);
-        this.registerAsType(CreditCardsServiceFactory.PayPalPersistenceDescriptor, CreditCardsMongoDbPersistence_1.CreditCardsMongoDbPersistence);
+        this.registerAsType(CreditCardsServiceFactory.PayPalPersistenceDescriptor, CreditCardsPayPalPersistence_1.CreditCardsPayPalPersistence);
         this.registerAsType(CreditCardsServiceFactory.ControllerDescriptor, CreditCardsController_1.CreditCardsController);
         this.registerAsType(CreditCardsServiceFactory.SenecaServiceDescriptor, CreditCardsSenecaServiceV1_1.CreditCardsSenecaServiceV1);
         this.registerAsType(CreditCardsServiceFactory.HttpServiceDescriptor, CreditCardsHttpServiceV1_1.CreditCardsHttpServiceV1);
