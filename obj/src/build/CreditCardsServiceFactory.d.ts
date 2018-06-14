@@ -5,6 +5,7 @@ export declare class CreditCardsServiceFactory extends Factory {
     static MemoryPersistenceDescriptor: Descriptor;
     static FilePersistenceDescriptor: Descriptor;
     static MongoDbPersistenceDescriptor: Descriptor;
+    static PayPalPersistenceDescriptor: Descriptor;
     static ControllerDescriptor: Descriptor;
     static SenecaServiceDescriptor: Descriptor;
     static HttpServiceDescriptor: Descriptor;

@@ -23,6 +23,7 @@ CreditCardsServiceFactory.Descriptor = new pip_services_commons_node_2.Descripto
 CreditCardsServiceFactory.MemoryPersistenceDescriptor = new pip_services_commons_node_2.Descriptor("pip-services-creditcards", "persistence", "memory", "*", "1.0");
 CreditCardsServiceFactory.FilePersistenceDescriptor = new pip_services_commons_node_2.Descriptor("pip-services-creditcards", "persistence", "file", "*", "1.0");
 CreditCardsServiceFactory.MongoDbPersistenceDescriptor = new pip_services_commons_node_2.Descriptor("pip-services-creditcards", "persistence", "mongodb", "*", "1.0");
+CreditCardsServiceFactory.PayPalPersistenceDescriptor = new pip_services_commons_node_2.Descriptor("pip-services-creditcards", "persistence", "paypal", "*", "1.0");
 CreditCardsServiceFactory.ControllerDescriptor = new pip_services_commons_node_2.Descriptor("pip-services-creditcards", "controller", "default", "*", "1.0");
 CreditCardsServiceFactory.SenecaServiceDescriptor = new pip_services_commons_node_2.Descriptor("pip-services-creditcards", "service", "seneca", "*", "1.0");
 CreditCardsServiceFactory.HttpServiceDescriptor = new pip_services_commons_node_2.Descriptor("pip-services-creditcards", "service", "http", "*", "1.0");
