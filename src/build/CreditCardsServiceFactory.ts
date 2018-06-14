@@ -13,6 +13,7 @@ export class CreditCardsServiceFactory extends Factory {
 	public static MemoryPersistenceDescriptor = new Descriptor("pip-services-creditcards", "persistence", "memory", "*", "1.0");
 	public static FilePersistenceDescriptor = new Descriptor("pip-services-creditcards", "persistence", "file", "*", "1.0");
 	public static MongoDbPersistenceDescriptor = new Descriptor("pip-services-creditcards", "persistence", "mongodb", "*", "1.0");
+	public static PayPalPersistenceDescriptor = new Descriptor("pip-services-creditcards", "persistence", "paypal", "*", "1.0");
 	public static ControllerDescriptor = new Descriptor("pip-services-creditcards", "controller", "default", "*", "1.0");
 	public static SenecaServiceDescriptor = new Descriptor("pip-services-creditcards", "service", "seneca", "*", "1.0");
 	public static HttpServiceDescriptor = new Descriptor("pip-services-creditcards", "service", "http", "*", "1.0");
