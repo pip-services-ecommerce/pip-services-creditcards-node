@@ -20,8 +20,8 @@ export declare class CreditCardsPayPalPersistence implements ICreditCardsPersist
     isOpened(): boolean;
     open(correlationId: string, callback: (err: any) => void): void;
     close(correlationId: string, callback: (err: any) => void): void;
-    private toPublic(value);
-    private fromPublic(value);
+    private toPublic;
+    private fromPublic;
     getPageByFilter(correlationId: string, filter: FilterParams, paging: PagingParams, callback: (err: any, page: DataPage<CreditCardV1>) => void): void;
     getOneById(correlationId: string, id: string, callback: (err: any, item: CreditCardV1) => void): void;
     create(correlationId: string, item: CreditCardV1, callback: (err: any, item: CreditCardV1) => void): void;
