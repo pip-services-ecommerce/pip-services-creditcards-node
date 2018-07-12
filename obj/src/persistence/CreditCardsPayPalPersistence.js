@@ -55,7 +55,6 @@ class CreditCardsPayPalPersistence {
     toPublic(value) {
         if (value == null)
             return null;
-        console.log("Value: ", value);
         let result = _.omit(value, 'external_customer_id', 'external_card_id', 'external_card_id', 'valid_until', 'create_time', 'update_time', 'links');
         // Parse external_card_id
         let temp = value.external_card_id.split(';');
@@ -65,7 +64,6 @@ class CreditCardsPayPalPersistence {
         result.saved = temp.length > 3 ? temp[3] == 'saved' : false;
         result.default = temp.length > 4 ? temp[4] == 'default' : false;
         result.customer_id = temp.length > 5 ? temp[5] : value.external_customer_id;
-        console.log("Result: ", result);
         return result;
     }
     fromPublic(value) {
