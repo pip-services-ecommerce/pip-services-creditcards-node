@@ -14,6 +14,8 @@ import { CredentialParams } from 'pip-services-commons-node';
 import { CredentialResolver } from 'pip-services-commons-node';
 import { CompositeLogger } from 'pip-services-commons-node';
 
+import { BadRequestException } from 'pip-services-commons-node';
+
 import { CreditCardV1 } from '../data/version1/CreditCardV1';
 import { CreditCardTypeV1 } from '../data/version1/CreditCardTypeV1';
 import { ICreditCardsPersistence } from './ICreditCardsPersistence'
@@ -78,8 +80,7 @@ export class CreditCardsPayPalPersistence implements ICreditCardsPersistence, IC
 
         let result = _.omit(value, 'external_customer_id', 'external_card_id',
             'external_card_id', 'valid_until', 'create_time', 'update_time', 'links');
-        result.customer_id = value.external_customer_id;
-
+       
         // Parse external_card_id
         let temp = value.external_card_id.split(';');
         result.number = temp.length > 0 ? temp[0] : '';
@@ -87,12 +88,15 @@ export class CreditCardsPayPalPersistence implements ICreditCardsPersistence, IC
         result.ccv = temp.length > 2 ? temp[2] : '';
         result.saved = temp.length > 3 ? temp[3] == 'saved' : false;
         result.default = temp.length > 4 ? temp[4] == 'default' : false;
-
+        result.customer_id = temp.length > 5 ? temp[5] : value.external_customer_id;
         return result;
     }
 
     private fromPublic(value: CreditCardV1): any {
         if (value == null) return null;
+
+        delete value.create_time;
+        delete value.update_time;
 
         let result = _.omit(value, 'id', 'state', 'customer_id', 'ccv', 'name', 'saved', 'default');
         result.external_customer_id = value.customer_id;
@@ -103,6 +107,7 @@ export class CreditCardsPayPalPersistence implements ICreditCardsPersistence, IC
         temp += ';' + (value.ccv ? value.ccv.replace(';', '')  : '');
         temp += ';' + (value.saved ? 'saved' : '');
         temp += ';' + (value.default ? 'default' : '');
+        temp += ';' + (value.customer_id ? value.customer_id.replace(';', '') : '');
         result.external_card_id = temp;
 
         return result;
@@ -199,6 +204,21 @@ export class CreditCardsPayPalPersistence implements ICreditCardsPersistence, IC
         item = this.fromPublic(item);
 
         this._client.creditCard.create(item, (err, data) => {
+            console.log("Creating card", item);
+
+            if (err != null) {
+                var strErr = JSON.stringify(err);
+                this._logger.trace(correlationId, "Error creating credit card with PayPal persistence: ", strErr);
+
+                let code = err && err.response ? err.response.name : "UNKNOWN";
+                let message = err && err.response ? err.response.message : strErr;
+                let status = err && err.httpStatusCode ? err.httpStatusCode: "500";
+
+                err = new BadRequestException(
+                            null, code,
+                            message
+                        ).withStatus(status);
+            }
             item = this.toPublic(data);
             callback(err, item);
         });

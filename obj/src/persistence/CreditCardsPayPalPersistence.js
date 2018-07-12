@@ -5,6 +5,7 @@ let async = require('async');
 const pip_services_commons_node_1 = require("pip-services-commons-node");
 const pip_services_commons_node_2 = require("pip-services-commons-node");
 const pip_services_commons_node_3 = require("pip-services-commons-node");
+const pip_services_commons_node_4 = require("pip-services-commons-node");
 class CreditCardsPayPalPersistence {
     constructor() {
         this._sandbox = false;
@@ -54,8 +55,8 @@ class CreditCardsPayPalPersistence {
     toPublic(value) {
         if (value == null)
             return null;
+        console.log("Value: ", value);
         let result = _.omit(value, 'external_customer_id', 'external_card_id', 'external_card_id', 'valid_until', 'create_time', 'update_time', 'links');
-        result.customer_id = value.external_customer_id;
         // Parse external_card_id
         let temp = value.external_card_id.split(';');
         result.number = temp.length > 0 ? temp[0] : '';
@@ -63,11 +64,15 @@ class CreditCardsPayPalPersistence {
         result.ccv = temp.length > 2 ? temp[2] : '';
         result.saved = temp.length > 3 ? temp[3] == 'saved' : false;
         result.default = temp.length > 4 ? temp[4] == 'default' : false;
+        result.customer_id = temp.length > 5 ? temp[5] : value.external_customer_id;
+        console.log("Result: ", result);
         return result;
     }
     fromPublic(value) {
         if (value == null)
             return null;
+        delete value.create_time;
+        delete value.update_time;
         let result = _.omit(value, 'id', 'state', 'customer_id', 'ccv', 'name', 'saved', 'default');
         result.external_customer_id = value.customer_id;
         // Generate external_card_id
@@ -76,6 +81,7 @@ class CreditCardsPayPalPersistence {
         temp += ';' + (value.ccv ? value.ccv.replace(';', '') : '');
         temp += ';' + (value.saved ? 'saved' : '');
         temp += ';' + (value.default ? 'default' : '');
+        temp += ';' + (value.customer_id ? value.customer_id.replace(';', '') : '');
         result.external_card_id = temp;
         return result;
     }
@@ -148,6 +154,15 @@ class CreditCardsPayPalPersistence {
         item = _.omit(item, 'id');
         item = this.fromPublic(item);
         this._client.creditCard.create(item, (err, data) => {
+            console.log("Creating card", item);
+            if (err != null) {
+                var strErr = JSON.stringify(err);
+                this._logger.trace(correlationId, "Error creating credit card with PayPal persistence: ", strErr);
+                let code = err && err.response ? err.response.name : "UNKNOWN";
+                let message = err && err.response ? err.response.message : strErr;
+                let status = err && err.httpStatusCode ? err.httpStatusCode : "500";
+                err = new pip_services_commons_node_4.BadRequestException(null, code, message).withStatus(status);
+            }
             item = this.toPublic(data);
             callback(err, item);
         });
