@@ -16,7 +16,7 @@ class CreditCardV1Schema extends pip_services_commons_node_1.ObjectSchema {
         this.withRequiredProperty('expire_year', pip_services_commons_node_2.TypeCode.Integer);
         this.withRequiredProperty('first_name', pip_services_commons_node_2.TypeCode.String);
         this.withRequiredProperty('last_name', pip_services_commons_node_2.TypeCode.String);
-        this.withRequiredProperty('billing_address', new AddressV1Schema_1.AddressV1Schema());
+        this.withOptionalProperty('billing_address', new AddressV1Schema_1.AddressV1Schema());
         this.withOptionalProperty('state', pip_services_commons_node_2.TypeCode.String);
         this.withOptionalProperty('ccv', pip_services_commons_node_2.TypeCode.String);
         this.withOptionalProperty('name', pip_services_commons_node_2.TypeCode.String);
