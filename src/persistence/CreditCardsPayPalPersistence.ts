@@ -28,7 +28,7 @@ export class CreditCardsPayPalPersistence implements ICreditCardsPersistence, IC
     private _logger: CompositeLogger = new CompositeLogger();
     private _client: any = null;
 
-    public constructor() {}
+    public constructor() { }
 
     public configure(config: ConfigParams): void {
         this._logger.configure(config);
@@ -80,7 +80,7 @@ export class CreditCardsPayPalPersistence implements ICreditCardsPersistence, IC
 
         let result = _.omit(value, 'external_customer_id', 'external_card_id',
             'external_card_id', 'valid_until', 'create_time', 'update_time', 'links');
-       
+
         // Parse external_card_id
         let temp = value.external_card_id.split(';');
         result.number = temp.length > 0 ? temp[0] : '';
@@ -104,7 +104,7 @@ export class CreditCardsPayPalPersistence implements ICreditCardsPersistence, IC
         // Generate external_card_id
         let temp = value.number;
         temp += ';' + (value.name ? value.name.replace(';', '_') : '');
-        temp += ';' + (value.ccv ? value.ccv.replace(';', '')  : '');
+        temp += ';' + (value.ccv ? value.ccv.replace(';', '') : '');
         temp += ';' + (value.saved ? 'saved' : '');
         temp += ';' + (value.default ? 'default' : '');
         temp += ';' + (value.customer_id ? value.customer_id.replace(';', '') : '');
@@ -147,7 +147,7 @@ export class CreditCardsPayPalPersistence implements ICreditCardsPersistence, IC
                 if (customerId)
                     options.external_customer_id = customerId;
 
-                 this._client.creditCard.list(options, (err, data) => {
+                this._client.creditCard.list(options, (err, data) => {
                     if (err) {
                         callback(err);
                         return;
@@ -212,12 +212,12 @@ export class CreditCardsPayPalPersistence implements ICreditCardsPersistence, IC
 
                 let code = err && err.response ? err.response.name : "UNKNOWN";
                 let message = err && err.response ? err.response.message : strErr;
-                let status = err && err.httpStatusCode ? err.httpStatusCode: "500";
+                let status = err && err.httpStatusCode ? err.httpStatusCode : "500";
 
                 err = new BadRequestException(
-                            null, code,
-                            message
-                        ).withStatus(status);
+                    null, code,
+                    message
+                ).withStatus(status);
             }
             item = this.toPublic(data);
             callback(err, item);
@@ -230,16 +230,34 @@ export class CreditCardsPayPalPersistence implements ICreditCardsPersistence, IC
         let data: any = this.fromPublic(item);
 
         // Delete and then recreate, because some fields are read-only in PayPal
-        this._client.creditCard.del(id, (err) => {
+        // this._client.creditCard.del(id, (err) => {
+        //     if (err) {
+        //         callback(err, null);
+        //         return;
+        //     }
+
+        //     this._client.creditCard.create(data, (err, data) => {
+        //         item = this.toPublic(data);
+        //         callback(err, item);
+        //     });
+        // });
+
+        // First try to create then delete, because if user misstyped credit card will be just deleted
+        this._client.creditCard.create(data, (err, data) => {
             if (err) {
                 callback(err, null);
                 return;
             }
 
-            this._client.creditCard.create(data, (err, data) => {
-                item = this.toPublic(data);
-                callback(err, item);
+            this._client.creditCard.del(id, (err) => {
+                if (err) {
+                    callback(err, null);
+                    return;
+                }
             });
+
+            item = this.toPublic(data);
+            callback(err, item);
         });
     }
 

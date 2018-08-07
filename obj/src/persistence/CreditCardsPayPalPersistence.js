@@ -169,15 +169,30 @@ class CreditCardsPayPalPersistence {
         let id = item.id;
         let data = this.fromPublic(item);
         // Delete and then recreate, because some fields are read-only in PayPal
-        this._client.creditCard.del(id, (err) => {
+        // this._client.creditCard.del(id, (err) => {
+        //     if (err) {
+        //         callback(err, null);
+        //         return;
+        //     }
+        //     this._client.creditCard.create(data, (err, data) => {
+        //         item = this.toPublic(data);
+        //         callback(err, item);
+        //     });
+        // });
+        // First try to create then delete, because if user misstyped credit card will be just deleted
+        this._client.creditCard.create(data, (err, data) => {
             if (err) {
                 callback(err, null);
                 return;
             }
-            this._client.creditCard.create(data, (err, data) => {
-                item = this.toPublic(data);
-                callback(err, item);
+            this._client.creditCard.del(id, (err) => {
+                if (err) {
+                    callback(err, null);
+                    return;
+                }
             });
+            item = this.toPublic(data);
+            callback(err, item);
         });
     }
     deleteById(correlationId, id, callback) {
