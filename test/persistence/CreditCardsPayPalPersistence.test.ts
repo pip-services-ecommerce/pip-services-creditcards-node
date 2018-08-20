@@ -6,16 +6,24 @@ import { CreditCardsPayPalPersistence } from '../../src/persistence/CreditCardsP
 import { CreditCardsPersistenceFixture } from './CreditCardsPersistenceFixture';
 
 suite('CreditCardsPayPalPersistence', ()=> {
+    var PAYPAL_ACCESS_ID = process.env["PAYPAL_ACCESS_ID"] || "";
+    var PAYPAL_ACCESS_KEY = process.env["PAYPAL_ACCESS_KEY"] || "";
+
+    if (!PAYPAL_ACCESS_ID || !PAYPAL_ACCESS_KEY)
+        return;
+
+    var config = ConfigParams.fromTuples(
+        'credential.access_id', PAYPAL_ACCESS_ID,
+        'credential.access_key', PAYPAL_ACCESS_KEY,
+        'options.sandbox', true
+    );
+
     let persistence: CreditCardsPayPalPersistence;
     let fixture: CreditCardsPersistenceFixture;
     
     suiteSetup((done) => {
         persistence = new CreditCardsPayPalPersistence();
-        persistence.configure(ConfigParams.fromTuples(
-            'credential.access_id', 'AXIuEtDAPKJMkesVnyZkHBPjcG0DETji_jwlyksBO6pr_lLW-WvISz1EerQL4MS_zubyWdJQofOYOpNj',
-            'credential.access_key', 'EKmlVA7GvQHcD1R1Dk5qGHiQealLtiKuap0DjrP7sOdLxCchd_Jqj5OGq82Gh-f555ch2o1p9FXrXtcd',
-            'options.sandbox', true
-        ));
+        persistence.configure(config);
         
         fixture = new CreditCardsPersistenceFixture(persistence);
         

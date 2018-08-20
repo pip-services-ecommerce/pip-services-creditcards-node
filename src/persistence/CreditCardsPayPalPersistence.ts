@@ -10,9 +10,9 @@ import { IReferences } from 'pip-services-commons-node';
 import { IReferenceable } from 'pip-services-commons-node';
 import { IOpenable } from 'pip-services-commons-node';
 import { ICleanable } from 'pip-services-commons-node';
-import { CredentialParams } from 'pip-services-commons-node';
-import { CredentialResolver } from 'pip-services-commons-node';
-import { CompositeLogger } from 'pip-services-commons-node';
+import { CredentialParams } from 'pip-services-components-node';
+import { CredentialResolver } from 'pip-services-components-node';
+import { CompositeLogger } from 'pip-services-components-node';
 
 import { BadRequestException } from 'pip-services-commons-node';
 
@@ -42,7 +42,7 @@ export class CreditCardsPayPalPersistence implements ICreditCardsPersistence, IC
         this._credentialsResolver.setReferences(references);
     }
 
-    public isOpened(): boolean {
+    public isOpen(): boolean {
         return this._client != null;
     }
 
