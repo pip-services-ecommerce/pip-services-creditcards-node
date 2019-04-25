@@ -1,7 +1,7 @@
 export declare class CreditCardTypeV1 {
-    static readonly Visa = "visa";
-    static readonly Mastercard = "mastercard";
-    static readonly AmericanExpress = "amex";
-    static readonly Discover = "discover";
-    static readonly Maestro = "maestro";
+    static readonly Visa: string;
+    static readonly Mastercard: string;
+    static readonly AmericanExpress: string;
+    static readonly Discover: string;
+    static readonly Maestro: string;
 }
