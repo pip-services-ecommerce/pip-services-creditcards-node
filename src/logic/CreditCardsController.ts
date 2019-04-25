@@ -1,24 +1,24 @@
 let async = require('async');
 
-import { ConfigParams } from 'pip-services-commons-node';
-import { IConfigurable } from 'pip-services-commons-node';
-import { IReferences } from 'pip-services-commons-node';
-import { Descriptor } from 'pip-services-commons-node';
-import { IReferenceable } from 'pip-services-commons-node';
-import { DependencyResolver } from 'pip-services-commons-node';
-import { FilterParams } from 'pip-services-commons-node';
-import { PagingParams } from 'pip-services-commons-node';
-import { DataPage } from 'pip-services-commons-node';
-import { ICommandable } from 'pip-services-commons-node';
-import { CommandSet } from 'pip-services-commons-node';
-import { BadRequestException } from 'pip-services-commons-node';
+import { ConfigParams } from 'pip-services3-commons-node';
+import { IConfigurable } from 'pip-services3-commons-node';
+import { IReferences } from 'pip-services3-commons-node';
+import { Descriptor } from 'pip-services3-commons-node';
+import { IReferenceable } from 'pip-services3-commons-node';
+import { DependencyResolver } from 'pip-services3-commons-node';
+import { FilterParams } from 'pip-services3-commons-node';
+import { PagingParams } from 'pip-services3-commons-node';
+import { DataPage } from 'pip-services3-commons-node';
+import { ICommandable } from 'pip-services3-commons-node';
+import { CommandSet } from 'pip-services3-commons-node';
+import { BadRequestException } from 'pip-services3-commons-node';
 
 import { CreditCardV1 } from '../data/version1/CreditCardV1';
 import { CreditCardStateV1 } from '../data/version1/CreditCardStateV1';
 import { ICreditCardsPersistence } from '../persistence/ICreditCardsPersistence';
 import { ICreditCardsController } from './ICreditCardsController';
 import { CreditCardsCommandSet } from './CreditCardsCommandSet';
-import { UnauthorizedException } from 'pip-services-commons-node/obj/src/errors/UnauthorizedException';
+import { UnauthorizedException } from 'pip-services3-commons-node/obj/src/errors/UnauthorizedException';
 
 export class CreditCardsController implements  IConfigurable, IReferenceable, ICommandable, ICreditCardsController {
     private static _defaultConfig: ConfigParams = ConfigParams.fromTuples(

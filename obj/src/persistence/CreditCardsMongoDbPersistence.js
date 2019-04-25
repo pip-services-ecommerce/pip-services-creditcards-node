@@ -1,15 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 let _ = require('lodash');
-const pip_services_commons_node_1 = require("pip-services-commons-node");
-const pip_services_mongodb_node_1 = require("pip-services-mongodb-node");
+const pip_services3_commons_node_1 = require("pip-services3-commons-node");
+const pip_services3_mongodb_node_1 = require("pip-services3-mongodb-node");
 const CreditCardsMongoDbSchema_1 = require("./CreditCardsMongoDbSchema");
-class CreditCardsMongoDbPersistence extends pip_services_mongodb_node_1.IdentifiableMongoDbPersistence {
+class CreditCardsMongoDbPersistence extends pip_services3_mongodb_node_1.IdentifiableMongoDbPersistence {
     constructor() {
         super('credit_cards', CreditCardsMongoDbSchema_1.CreditCardsMongoDbSchema());
     }
     composeFilter(filter) {
-        filter = filter || new pip_services_commons_node_1.FilterParams();
+        filter = filter || new pip_services3_commons_node_1.FilterParams();
         let criteria = [];
         let id = filter.getAsNullableString('id');
         if (id != null)

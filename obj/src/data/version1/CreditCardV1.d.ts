@@ -1,4 +1,4 @@
-import { IStringIdentifiable } from 'pip-services-commons-node';
+import { IStringIdentifiable } from 'pip-services3-commons-node';
 import { AddressV1 } from './AddressV1';
 export declare class CreditCardV1 implements IStringIdentifiable {
     id: string;

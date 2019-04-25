@@ -1,20 +1,20 @@
 let _ = require('lodash');
 let async = require('async');
 
-import { FilterParams } from 'pip-services-commons-node';
-import { PagingParams } from 'pip-services-commons-node';
-import { DataPage } from 'pip-services-commons-node';
-import { ConfigParams } from 'pip-services-commons-node';
-import { IConfigurable } from 'pip-services-commons-node';
-import { IReferences } from 'pip-services-commons-node';
-import { IReferenceable } from 'pip-services-commons-node';
-import { IOpenable } from 'pip-services-commons-node';
-import { ICleanable } from 'pip-services-commons-node';
-import { CredentialParams } from 'pip-services-components-node';
-import { CredentialResolver } from 'pip-services-components-node';
-import { CompositeLogger } from 'pip-services-components-node';
+import { FilterParams } from 'pip-services3-commons-node';
+import { PagingParams } from 'pip-services3-commons-node';
+import { DataPage } from 'pip-services3-commons-node';
+import { ConfigParams } from 'pip-services3-commons-node';
+import { IConfigurable } from 'pip-services3-commons-node';
+import { IReferences } from 'pip-services3-commons-node';
+import { IReferenceable } from 'pip-services3-commons-node';
+import { IOpenable } from 'pip-services3-commons-node';
+import { ICleanable } from 'pip-services3-commons-node';
+import { CredentialParams } from 'pip-services3-components-node';
+import { CredentialResolver } from 'pip-services3-components-node';
+import { CompositeLogger } from 'pip-services3-components-node';
 
-import { BadRequestException } from 'pip-services-commons-node';
+import { BadRequestException } from 'pip-services3-commons-node';
 
 import { CreditCardV1 } from '../data/version1/CreditCardV1';
 import { CreditCardTypeV1 } from '../data/version1/CreditCardTypeV1';

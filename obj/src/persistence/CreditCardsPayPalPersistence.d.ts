@@ -1,12 +1,12 @@
-import { FilterParams } from 'pip-services-commons-node';
-import { PagingParams } from 'pip-services-commons-node';
-import { DataPage } from 'pip-services-commons-node';
-import { ConfigParams } from 'pip-services-commons-node';
-import { IConfigurable } from 'pip-services-commons-node';
-import { IReferences } from 'pip-services-commons-node';
-import { IReferenceable } from 'pip-services-commons-node';
-import { IOpenable } from 'pip-services-commons-node';
-import { ICleanable } from 'pip-services-commons-node';
+import { FilterParams } from 'pip-services3-commons-node';
+import { PagingParams } from 'pip-services3-commons-node';
+import { DataPage } from 'pip-services3-commons-node';
+import { ConfigParams } from 'pip-services3-commons-node';
+import { IConfigurable } from 'pip-services3-commons-node';
+import { IReferences } from 'pip-services3-commons-node';
+import { IReferenceable } from 'pip-services3-commons-node';
+import { IOpenable } from 'pip-services3-commons-node';
+import { ICleanable } from 'pip-services3-commons-node';
 import { CreditCardV1 } from '../data/version1/CreditCardV1';
 import { ICreditCardsPersistence } from './ICreditCardsPersistence';
 export declare class CreditCardsPayPalPersistence implements ICreditCardsPersistence, IConfigurable, IReferenceable, IOpenable, ICleanable {
@@ -20,8 +20,8 @@ export declare class CreditCardsPayPalPersistence implements ICreditCardsPersist
     isOpen(): boolean;
     open(correlationId: string, callback: (err: any) => void): void;
     close(correlationId: string, callback: (err: any) => void): void;
-    private toPublic(value);
-    private fromPublic(value);
+    private toPublic;
+    private fromPublic;
     getPageByFilter(correlationId: string, filter: FilterParams, paging: PagingParams, callback: (err: any, page: DataPage<CreditCardV1>) => void): void;
     getOneById(correlationId: string, id: string, callback: (err: any, item: CreditCardV1) => void): void;
     create(correlationId: string, item: CreditCardV1, callback: (err: any, item: CreditCardV1) => void): void;

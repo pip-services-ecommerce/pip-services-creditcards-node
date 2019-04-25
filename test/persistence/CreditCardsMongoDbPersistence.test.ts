@@ -1,6 +1,6 @@
 let process = require('process');
 
-import { ConfigParams } from 'pip-services-commons-node';
+import { ConfigParams } from 'pip-services3-commons-node';
 
 import { CreditCardsMongoDbPersistence } from '../../src/persistence/CreditCardsMongoDbPersistence';
 import { CreditCardsPersistenceFixture } from './CreditCardsPersistenceFixture';

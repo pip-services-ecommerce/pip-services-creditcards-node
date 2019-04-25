@@ -1,6 +1,6 @@
 let paypal = require('paypal-rest-sdk');
 
-import { ConfigParams } from 'pip-services-commons-node';
+import { ConfigParams } from 'pip-services3-commons-node';
 
 import { CreditCardsPayPalPersistence } from '../../src/persistence/CreditCardsPayPalPersistence';
 import { CreditCardsPersistenceFixture } from './CreditCardsPersistenceFixture';

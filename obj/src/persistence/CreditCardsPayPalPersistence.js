@@ -2,15 +2,15 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 let _ = require('lodash');
 let async = require('async');
-const pip_services_commons_node_1 = require("pip-services-commons-node");
-const pip_services_components_node_1 = require("pip-services-components-node");
-const pip_services_components_node_2 = require("pip-services-components-node");
-const pip_services_commons_node_2 = require("pip-services-commons-node");
+const pip_services3_commons_node_1 = require("pip-services3-commons-node");
+const pip_services3_components_node_1 = require("pip-services3-components-node");
+const pip_services3_components_node_2 = require("pip-services3-components-node");
+const pip_services3_commons_node_2 = require("pip-services3-commons-node");
 class CreditCardsPayPalPersistence {
     constructor() {
         this._sandbox = false;
-        this._credentialsResolver = new pip_services_components_node_1.CredentialResolver();
-        this._logger = new pip_services_components_node_2.CompositeLogger();
+        this._credentialsResolver = new pip_services3_components_node_1.CredentialResolver();
+        this._logger = new pip_services3_components_node_2.CompositeLogger();
         this._client = null;
     }
     configure(config) {
@@ -136,7 +136,7 @@ class CreditCardsPayPalPersistence {
                 callback(null);
             });
         }, () => pageItems.length == pageSize && items.length < take, (err) => {
-            let page = err == null ? new pip_services_commons_node_1.DataPage(items) : null;
+            let page = err == null ? new pip_services3_commons_node_1.DataPage(items) : null;
             callback(err, page);
         });
     }
@@ -159,7 +159,7 @@ class CreditCardsPayPalPersistence {
                 let code = err && err.response ? err.response.name : "UNKNOWN";
                 let message = err && err.response ? err.response.message : strErr;
                 let status = err && err.httpStatusCode ? err.httpStatusCode : "500";
-                err = new pip_services_commons_node_2.BadRequestException(null, code, message).withStatus(status);
+                err = new pip_services3_commons_node_2.BadRequestException(null, code, message).withStatus(status);
             }
             item = this.toPublic(data);
             callback(err, item);

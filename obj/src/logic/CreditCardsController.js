@@ -1,14 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 let async = require('async');
-const pip_services_commons_node_1 = require("pip-services-commons-node");
-const pip_services_commons_node_2 = require("pip-services-commons-node");
-const pip_services_commons_node_3 = require("pip-services-commons-node");
+const pip_services3_commons_node_1 = require("pip-services3-commons-node");
+const pip_services3_commons_node_2 = require("pip-services3-commons-node");
+const pip_services3_commons_node_3 = require("pip-services3-commons-node");
 const CreditCardStateV1_1 = require("../data/version1/CreditCardStateV1");
 const CreditCardsCommandSet_1 = require("./CreditCardsCommandSet");
 class CreditCardsController {
     constructor() {
-        this._dependencyResolver = new pip_services_commons_node_2.DependencyResolver(CreditCardsController._defaultConfig);
+        this._dependencyResolver = new pip_services3_commons_node_2.DependencyResolver(CreditCardsController._defaultConfig);
     }
     configure(config) {
         this._dependencyResolver.configure(config);
@@ -47,7 +47,7 @@ class CreditCardsController {
             (callback) => {
                 this._persistence.getOneById(correlationId, card.id, (err, data) => {
                     if (err == null && data && data.customer_id != card.customer_id) {
-                        err = new pip_services_commons_node_3.BadRequestException(correlationId, 'WRONG_CUST_ID', 'Wrong credit card customer id')
+                        err = new pip_services3_commons_node_3.BadRequestException(correlationId, 'WRONG_CUST_ID', 'Wrong credit card customer id')
                             .withDetails('id', card.id)
                             .withDetails('customer_id', card.customer_id);
                     }
@@ -70,7 +70,7 @@ class CreditCardsController {
             (callback) => {
                 this._persistence.getOneById(correlationId, id, (err, data) => {
                     if (err == null && data && data.customer_id != customerId) {
-                        err = new pip_services_commons_node_3.BadRequestException(correlationId, 'WRONG_CUST_ID', 'Wrong credit card customer id')
+                        err = new pip_services3_commons_node_3.BadRequestException(correlationId, 'WRONG_CUST_ID', 'Wrong credit card customer id')
                             .withDetails('id', id)
                             .withDetails('customer_id', customerId);
                     }
@@ -89,6 +89,6 @@ class CreditCardsController {
         });
     }
 }
-CreditCardsController._defaultConfig = pip_services_commons_node_1.ConfigParams.fromTuples('dependencies.persistence', 'pip-services-creditcards:persistence:*:*:1.0');
+CreditCardsController._defaultConfig = pip_services3_commons_node_1.ConfigParams.fromTuples('dependencies.persistence', 'pip-services-creditcards:persistence:*:*:1.0');
 exports.CreditCardsController = CreditCardsController;
 //# sourceMappingURL=CreditCardsController.js.map

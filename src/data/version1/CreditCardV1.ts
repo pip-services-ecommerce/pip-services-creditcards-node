@@ -1,4 +1,4 @@
-import { IStringIdentifiable } from 'pip-services-commons-node';
+import { IStringIdentifiable } from 'pip-services3-commons-node';
 import { CreditCardTypeV1 } from './CreditCardTypeV1';
 import { CreditCardStateV1 } from './CreditCardStateV1';
 import { AddressV1 } from './AddressV1';
