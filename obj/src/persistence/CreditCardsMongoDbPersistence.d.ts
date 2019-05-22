@@ -6,6 +6,6 @@ import { CreditCardV1 } from '../data/version1/CreditCardV1';
 import { ICreditCardsPersistence } from './ICreditCardsPersistence';
 export declare class CreditCardsMongoDbPersistence extends IdentifiableMongoosePersistence<CreditCardV1, string> implements ICreditCardsPersistence {
     constructor();
-    private composeFilter;
+    private composeFilter(filter);
     getPageByFilter(correlationId: string, filter: FilterParams, paging: PagingParams, callback: (err: any, page: DataPage<CreditCardV1>) => void): void;
 }
