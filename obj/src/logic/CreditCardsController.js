@@ -89,6 +89,6 @@ class CreditCardsController {
         });
     }
 }
-CreditCardsController._defaultConfig = pip_services3_commons_node_1.ConfigParams.fromTuples('dependencies.persistence', 'pip-services-creditcards:persistence:*:*:1.0');
 exports.CreditCardsController = CreditCardsController;
+CreditCardsController._defaultConfig = pip_services3_commons_node_1.ConfigParams.fromTuples('dependencies.persistence', 'pip-services-creditcards:persistence:*:*:1.0');
 //# sourceMappingURL=CreditCardsController.js.map

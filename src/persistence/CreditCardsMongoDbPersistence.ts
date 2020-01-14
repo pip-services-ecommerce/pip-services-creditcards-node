@@ -4,16 +4,18 @@ import { FilterParams } from 'pip-services3-commons-node';
 import { PagingParams } from 'pip-services3-commons-node';
 import { DataPage } from 'pip-services3-commons-node';
 import { TagsProcessor } from 'pip-services3-commons-node';
-import { IdentifiableMongoosePersistence } from 'pip-services3-mongoose-node';
+import { IdentifiableMongoDbPersistence } from 'pip-services3-mongodb-node';
 
 import { CreditCardV1 } from '../data/version1/CreditCardV1';
 import { ICreditCardsPersistence } from './ICreditCardsPersistence';
-import { CreditCardsMongooseSchema } from './CreditCardsMongooseSchema';
 
-export class CreditCardsMongoDbPersistence extends IdentifiableMongoosePersistence<CreditCardV1, string> implements ICreditCardsPersistence {
+export class CreditCardsMongoDbPersistence
+    extends IdentifiableMongoDbPersistence<CreditCardV1, string>
+    implements ICreditCardsPersistence {
 
     constructor() {
-        super('credit_cards', CreditCardsMongooseSchema());
+        super('credit_cards');
+        super.ensureIndex({ customer_id: 1 });
     }
     
     private composeFilter(filter: any) {

@@ -19,6 +19,7 @@ class CreditCardsServiceFactory extends pip_services3_components_node_1.Factory 
         this.registerAsType(CreditCardsServiceFactory.HttpServiceDescriptor, CreditCardsHttpServiceV1_1.CreditCardsHttpServiceV1);
     }
 }
+exports.CreditCardsServiceFactory = CreditCardsServiceFactory;
 CreditCardsServiceFactory.Descriptor = new pip_services3_commons_node_1.Descriptor("pip-services-creditcards", "factory", "default", "default", "1.0");
 CreditCardsServiceFactory.MemoryPersistenceDescriptor = new pip_services3_commons_node_1.Descriptor("pip-services-creditcards", "persistence", "memory", "*", "1.0");
 CreditCardsServiceFactory.FilePersistenceDescriptor = new pip_services3_commons_node_1.Descriptor("pip-services-creditcards", "persistence", "file", "*", "1.0");
@@ -26,5 +27,4 @@ CreditCardsServiceFactory.MongoDbPersistenceDescriptor = new pip_services3_commo
 CreditCardsServiceFactory.PayPalPersistenceDescriptor = new pip_services3_commons_node_1.Descriptor("pip-services-creditcards", "persistence", "paypal", "*", "1.0");
 CreditCardsServiceFactory.ControllerDescriptor = new pip_services3_commons_node_1.Descriptor("pip-services-creditcards", "controller", "default", "*", "1.0");
 CreditCardsServiceFactory.HttpServiceDescriptor = new pip_services3_commons_node_1.Descriptor("pip-services-creditcards", "service", "http", "*", "1.0");
-exports.CreditCardsServiceFactory = CreditCardsServiceFactory;
 //# sourceMappingURL=CreditCardsServiceFactory.js.map
